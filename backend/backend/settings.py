@@ -36,7 +36,7 @@ INSTALLED_APPS = [
 
     # Other apps
     'corsheaders',
-    'rest-framework',
+    'rest_framework',
 
     # Default Django apps
     'django.contrib.admin',
@@ -130,6 +130,6 @@ STATIC_URL = '/static/'
 
 
 # whitelist where frontend will be served
-CORS_ORIGIN_WHITELIST = (
-    'localhost:3000/'
-)
+CORS_ORIGIN_WHITELIST = [
+    'https://localhost:3000'
+]
