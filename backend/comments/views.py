@@ -10,7 +10,7 @@ from .models import Interest
 class CreateUserView(APIView):
     permission_classes = (permissions.AllowAny,)
 
-    def post(self, request, format='json'):
+    def post(self, request, format=None):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
