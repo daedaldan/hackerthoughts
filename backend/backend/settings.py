@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     # Other apps
     'corsheaders',
     'rest_framework',
+    'rest_framework.authtoken',
 
     # Default Django apps
     'django.contrib.admin',
@@ -46,6 +47,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+}
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',

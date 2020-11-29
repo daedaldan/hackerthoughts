@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework.authtoken.views import obtain_auth_token
 from comments import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', views.HelloWorldView.as_view(), name='hello'),
-    path('user/register/', views.CreateUserView.as_view(), name='register')
+    path('user/register/', views.CreateUserView.as_view(), name='register'),
+    path('user/token-auth/', obtain_auth_token, name='token_auth'),
 ]
