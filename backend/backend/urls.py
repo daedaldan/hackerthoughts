@@ -19,5 +19,6 @@ from comments import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.HelloWorldView.as_view(), name='hello')
+    path('hello/', views.HelloWorldView.as_view(), name='hello'),
+    path('user/register/', views.CreateUserView.as_view(), name='register')
 ]
