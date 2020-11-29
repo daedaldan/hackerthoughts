@@ -10,6 +10,8 @@ from rest_framework.authtoken.models import Token
 from .serializers import UserSerializer, InterestSerializer
 from .models import Interest
 
+import feedparser
+
 
 class CreateUserView(APIView):
     permission_classes = (permissions.AllowAny,)
@@ -28,6 +30,7 @@ class CreateUserView(APIView):
 
 # @api_view(['GET'])
 # def get_comments_view(request, user_id):
+#     feed = feedparser.parse('https://hnrss.org/bestcomments')
 #     interests = Interest.objects.filter(owner=user_id)
 #
 #     return Response()
