@@ -19,6 +19,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class InterestSerializer(serializers.ModelSerializer):
+    id = serializers.ReadOnlyField()
+    owner = serializers.SlugRelatedField(queryset=User.objects.all(), slug_field="username")
+
     class Meta:
         model = Interest
-        fields = ('interest')
+        fields = ('id', 'interest', 'owner')

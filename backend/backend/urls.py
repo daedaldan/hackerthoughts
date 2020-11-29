@@ -20,7 +20,11 @@ from comments import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('hello/', views.HelloWorldView.as_view(), name='hello'),
+    # interests
+    path('interests/get/<str:username>/', views.get_interests_view, name='get_interests'),
+    path('interests/create/', views.create_interest_view, name='create_interest'),
+    path('interests/delete/<str:interest_id>/', views.delete_interest_view, name='delete_interest'),
+    # user authentication
     path('user/register/', views.CreateUserView.as_view(), name='register'),
     path('user/token-auth/', obtain_auth_token, name='token_auth'),
 ]
