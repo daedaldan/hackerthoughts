@@ -21,7 +21,7 @@ from comments import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # comments
-path('comments/get/<str:username>/', views.get_comments_view, name='get_comments'),
+    path('comments/get/<str:username>/', views.get_comments_view, name='get_comments'),
     # interests
     path('interests/get/<str:username>/', views.get_interests_view, name='get_interests'),
     path('interests/create/', views.create_interest_view, name='create_interest'),
