@@ -5,7 +5,15 @@ const API_URL = 'http://127.0.0.1:8000/';
 
 class UserService {
   getComments(username) {
-    return axios.get(API_URL + 'comments/get/' + username + '/', { headers: authHeader() });
+    axios.get(
+        API_URL + 'comments/get/' + username + '/',
+        { headers: authHeader() }
+        ).then(
+            // does this work? need to check...
+            function (response) {
+              return response.data;
+            }
+    );
   }
 
   getInterests(username) {

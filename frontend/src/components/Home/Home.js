@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 
+import Interests from './Interests/Interests.js';
+import Comments from './Comments/Comments.js';
+
+import AuthService from "../../services/auth.service";
 import UserService from "../../services/user.service";
+
 
 let interests = [
     {"id": 2, "interest": "Cinematography", "owner": "testuser1"},
@@ -36,24 +41,45 @@ export default class Home extends Component {
     super(props);
     this.state = {
       interests: [],
-      comments: []
+      comments: [],
+      username: undefined
     };
 
     this.updateInterests = this.updateInterests.bind(this);
     this.updateComments = this.updateComments.bind(this);
   }
 
-  updateInterests(username) {
-    return UserService.getInterests(username);
+  componentDidMount() {
+    let currentUsername = AuthService.getCurrentUser().username;
+
+    this.setState({
+      interests: UserService.getInterests(currentUsername),
+      comments: UserService.getComments(currentUsername),
+      username: currentUsername
+    });
+
+    console.log(this.state.interests);
+    console.log(this.state.comments);
   }
 
-  updateComments(username) {
-    return UserService.getComments(username);
+  updateInterests() {
+    this.setState({
+      interests: UserService.getInterests(this.state.username)
+    });
+  }
+
+  updateComments() {
+    this.setState({
+      comments: UserService.getComments(this.state.username)
+    });
   }
 
   render() {
     return (
-      <p>This is the home page.</p>
+        <div>
+          <Interests interests={this.state.interests} updateInterests={this.updateInterests}/>
+          <Comments comments={this.state.comments}/>
+        </div>
     );
   }
 }
