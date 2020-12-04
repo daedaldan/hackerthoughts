@@ -63,17 +63,26 @@ export default class Login extends Component {
           },
           // if error occurs
           error => {
-            const resMessage =
+            if (error.response.status === 400) {
+              this.setState({
+                successful: false,
+                loading: false,
+                message: "Your username or password is incorrect. Please try again."
+              });
+            } else {
+              const resMessage =
                 (error.response &&
                 error.response.data &&
                 error.response.data.message) ||
                 error.message ||
                 error.toString();
 
-            this.setState({
-              loading: false,
-              message: resMessage
-            });
+              this.setState({
+                successful: false,
+                loading: false,
+                message: resMessage
+              });
+            }
           }
       );
     } // if form validation is unsuccessful

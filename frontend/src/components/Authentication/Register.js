@@ -113,17 +113,25 @@ export default class Register extends Component {
           },
           // if error occurs
           error => {
-            const resMessage =
+            if (error.response.status === 400) {
+              this.setState({
+                successful: false,
+                message: "The username or email you used is already associated with an account. " +
+                    "Please try again with a different one."
+              });
+            } else {
+              const resMessage =
                 (error.response &&
                 error.response.data &&
                 error.response.data.message) ||
                 error.message ||
                 error.toString();
 
-            this.setState({
-              successful: false,
-              message: resMessage
-            });
+              this.setState({
+                successful: false,
+                message: resMessage
+              });
+            }
           }
       );
     }
