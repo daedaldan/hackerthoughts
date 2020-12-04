@@ -9,6 +9,8 @@ import Login from './components/Authentication/Login.js';
 import Register from './components/Authentication/Register.js';
 import Logout from './components/Authentication/Logout.js';
 
+import PrivateRoute from './components/PrivateRoute/PrivateRoute.js';
+
 import AuthService from './services/auth.service.js';
 
 class App extends Component{
@@ -82,7 +84,7 @@ class App extends Component{
 
           <Switch>
             <Route exact path="/" component={Website} />
-            <Route exact path="/home" component={Home} />
+            <PrivateRoute exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
           </Switch>
