@@ -11,8 +11,9 @@ class AuthService {
         })
         .then(response => {
           if (response.data.token) {
-            let userData = JSON.stringify(response.data);
+            let userData = response.data;
             userData['username'] = username;
+            userData = JSON.stringify(userData);
             localStorage.setItem('user', userData);
           }
 

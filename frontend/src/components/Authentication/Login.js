@@ -44,6 +44,7 @@ export default class Login extends Component {
   }
 
   handleLogin(e) {
+    console.log("handling login");
     e.preventDefault();
 
     this.setState({
@@ -55,6 +56,7 @@ export default class Login extends Component {
 
     // CheckButton is not displayed, used to verify if form validation is successful
     if (this.checkBtn.context._errors.length === 0) {
+      console.log("about to log in");
       AuthService.login(this.state.username, this.state.password).then(
           // if login is successful
           () => {
@@ -76,8 +78,10 @@ export default class Login extends Component {
             });
           }
       );
+      console.log("logged in");
     } // if form validation is unsuccessful
     else {
+      console.log("unsuccessful form validation");
       this.setState({
         loading: false
       });
@@ -85,8 +89,14 @@ export default class Login extends Component {
   }
 
   render() {
+    console.log("rendering");
     return (
-      <Form>
+      <Form
+          onSubmit={this.handleLogin}
+          ref={c => {
+            this.form = c;
+          }}
+      >
         <label htmlFor="username">Username</label>
         <Input
             type="text"
