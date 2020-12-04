@@ -6,6 +6,8 @@ import './App.css';
 import Home from './components/Home/Home.js';
 import Website from './components/Website/Website.js';
 import Login from './components/Authentication/Login.js';
+import Register from './components/Authentication/Register.js';
+import Logout from './components/Authentication/Logout.js';
 
 import AuthService from './services/auth.service.js';
 
@@ -15,6 +17,8 @@ class App extends Component{
     this.state = {
       currentUser: undefined
     };
+
+    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -25,6 +29,14 @@ class App extends Component{
         currentUser: user
       });
     }
+  }
+
+  logout() {
+    AuthService.logout();
+
+    this.setState({
+      currentUser: undefined
+    });
   }
 
   render() {
@@ -38,13 +50,21 @@ class App extends Component{
                           Home
                         </Link>
                       </li>
+                      <li>
+                        <Logout logout={this.logout}/>
+                      </li>
                     </ul>);
     } else {
-      // show on navbar if no user is logged in
+      // show on navbar if no user is logged on
       navbarLinks = (<ul>
                       <li>
                         <Link to={"/login"}>
                           Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link to={"/register"}>
+                          Register
                         </Link>
                       </li>
                     </ul>);
@@ -64,6 +84,7 @@ class App extends Component{
             <Route exact path="/" component={Website} />
             <Route exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
           </Switch>
         </BrowserRouter>
       </div>
