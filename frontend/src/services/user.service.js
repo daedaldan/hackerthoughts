@@ -12,10 +12,10 @@ class UserService {
     return axios.get(API_URL + 'interests/get/' + username + '/', { headers: authHeader() });
   }
 
-  createInterest(id, interest, username) {
+  createInterest(interest_id, interest, username) {
     return axios.post(API_URL + 'interests/create/',
         {
-          id: id,
+          id: interest_id,
           interest: interest,
           owner: username
         },

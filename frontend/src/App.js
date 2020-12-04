@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import logo from './logo.svg';
 import './App.css';
 
 import Home from './components/Home/Home.js';
@@ -12,6 +11,7 @@ import Logout from './components/Authentication/Logout.js';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.js';
 
 import AuthService from './services/auth.service.js';
+
 
 class App extends Component{
   constructor(props) {
