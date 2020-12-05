@@ -21,22 +21,27 @@ export default class Home extends Component {
   }
 
   async componentDidMount() {
+    // retrieve current user's username and update state
     let currentUsername = AuthService.getCurrentUser().username;
 
     this.setState({
       username: currentUsername
     });
 
+    // get list of interests from backend then update state with new interests
     await UserService.getInterests(currentUsername).then(response => {
-          this.setState({ interests: response.data })}
+          this.setState({ interests: response.data })
+          }
     );
 
+    // get list of comments from backend then update state with new comments
     await UserService.getComments(currentUsername).then(response => {
           this.setState({ comments: response.data });
-        }
+          }
     );
   }
 
+  // get list of interests from backend, update state with new interests, then update comments based on new interests
   async updateInterests() {
     await UserService.getInterests(this.state.username).then(response => {
           this.setState({ interests: response.data });
@@ -46,6 +51,7 @@ export default class Home extends Component {
     this.updateComments();
   }
 
+  // get list of comments from backend then update state with new comments
   async updateComments() {
     await UserService.getComments(this.state.username).then(response => {
           this.setState({ comments: response.data });

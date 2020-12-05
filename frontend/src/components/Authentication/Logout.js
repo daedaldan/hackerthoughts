@@ -10,6 +10,7 @@ class Logout extends Component {
   handleLogout() {
     this.props.logout();
 
+    // redirect user to Website component
     this.props.history.push('/');
     window.location.reload();
   }

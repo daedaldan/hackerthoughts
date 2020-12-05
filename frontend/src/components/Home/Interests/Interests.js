@@ -14,16 +14,19 @@ export default class Interests extends Component {
     this.deleteInterest = this.deleteInterest.bind(this);
   }
 
+  // update list of interests
   fetchInterests() {
     this.props.updateInterests();
   }
 
+  // add interest for specified user then update list of interests
   async addInterest(interest) {
     await UserService.createInterest(interest, this.props.username).then(response => {
       this.fetchInterests();
     });
   }
 
+  // delete interest based on given id then update list of interests
   async deleteInterest(interest_id) {
     await UserService.deleteInterest(interest_id).then(response => {
       this.fetchInterests();
@@ -35,10 +38,12 @@ export default class Interests extends Component {
     let interestsList;
 
     if (this.props.interests.length > 0) {
+      // populate interestsList with Interest components
       interestsList = this.props.interests.map((interestItem) =>
         <Interest interest={interestItem} key={interestItem.id} deleteInterest={this.deleteInterest}/>
       );
     } else {
+      // if user currently has no interests, or interests have not been retrieved yet, show text instead
       interestsList = "No interests yet.";
     }
 

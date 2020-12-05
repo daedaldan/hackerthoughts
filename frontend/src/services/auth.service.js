@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// URL for Django REST API backend
 const API_URL = "http://127.0.0.1:8000/user/";
 
 class AuthService {
@@ -11,6 +12,7 @@ class AuthService {
         })
         .then(response => {
           if (response.data.token) {
+            // save user token and info in local storage
             let userData = response.data;
             userData['username'] = username;
             userData = JSON.stringify(userData);
@@ -22,6 +24,7 @@ class AuthService {
   }
 
   logout() {
+    // delete user token and info from local storage
     localStorage.removeItem('user');
   }
 

@@ -44,8 +44,9 @@ class App extends Component{
   render() {
     let navbarLinks;
 
+    // show different navbar links based on user authentication status
     if (this.state.currentUser) {
-      // show on navbar if user is logged in
+      // if user is logged in
       navbarLinks = (<ul>
                       <li>
                         <Link to={"/home"}>
@@ -57,7 +58,7 @@ class App extends Component{
                       </li>
                     </ul>);
     } else {
-      // show on navbar if no user is logged on
+      // if no user is logged on
       navbarLinks = (<ul>
                       <li>
                         <Link to={"/login"}>
@@ -71,6 +72,8 @@ class App extends Component{
                       </li>
                     </ul>);
     }
+
+    // elements to be rendered
     return (
       <div>
         <BrowserRouter>

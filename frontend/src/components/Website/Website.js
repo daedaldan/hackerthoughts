@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default function Website() {
+  // landing page
   return (
       <div>
         <h3>Get the best of HackerNews with comments that are</h3>

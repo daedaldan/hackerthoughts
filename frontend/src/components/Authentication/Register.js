@@ -93,15 +93,17 @@ export default class Register extends Component {
       successful: false
     });
 
+    // validate form inputs
     this.form.validateAll();
 
+    // if no errors occurred, register user based on form inputs
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.register(
         this.state.email,
         this.state.username,
         this.state.password
       ).then(
-          // if registration is successful
+          // if registration is successful, redirect user to Login component
           response => {
             this.setState({
               message: response.data.message,
@@ -111,7 +113,7 @@ export default class Register extends Component {
             this.props.history.push('/login');
             window.location.reload();
           },
-          // if error occurs
+          // if any errors occur, show appropriate error message(s)
           error => {
             if (error.response.status === 400) {
               this.setState({
@@ -145,6 +147,7 @@ export default class Register extends Component {
             this.form = c;
           }}
       >
+        {/* check if successful registration has already occurred before showing form inputs */}
         {!this.state.successful && (
             <div>
               <label htmlFor="username">Username</label>
@@ -181,6 +184,7 @@ export default class Register extends Component {
         )}
 
 
+        {/* show message(s) if there are any */}
         {this.state.message && (
             // add CSS to make it alert instead of text
             <div>
@@ -188,6 +192,7 @@ export default class Register extends Component {
             </div>
         )}
 
+        {/* CheckButton is used to check for errors with form and is not displayed on UI */}
         <CheckButton
             style={{ display: "none" }}
             ref={c => {

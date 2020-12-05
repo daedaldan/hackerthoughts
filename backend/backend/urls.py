@@ -19,6 +19,7 @@ from rest_framework.authtoken.views import obtain_auth_token
 from comments import views
 
 urlpatterns = [
+    # admin
     path('admin/', admin.site.urls),
     # comments
     path('comments/get/<str:username>/', views.get_comments_view, name='get_comments'),

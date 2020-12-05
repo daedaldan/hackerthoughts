@@ -4,10 +4,13 @@ import Comment from './Comment.js';
 
 export default function Comments(props) {
   if (props.comments.length > 0) {
-    const commentsList = props.comments.map((commentItem, index) =>
+    // create list of user's recommended comments and populate it with Comment components
+    let commentsList = props.comments.map((commentItem, index) =>
       <Comment comment={commentItem} key={index}/>
     );
 
+
+    // show comments
     return (
       <div>
         <h1>Here are some comments we recommend.</h1>
@@ -15,6 +18,7 @@ export default function Comments(props) {
       </div>
     );
   } else {
+    // if user currently has no comments, or comments have not been retrieved yet, show text instead
     return (
       <div>
         <p>There are no comments matching your interests right now!

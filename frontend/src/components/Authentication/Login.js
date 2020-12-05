@@ -53,15 +53,15 @@ export default class Login extends Component {
 
     this.form.validateAll();
 
-    // CheckButton is not displayed, used to verify if form validation is successful
+    // if no errors occurred, log user in based on form inputs
     if (this.checkBtn.context._errors.length === 0) {
       AuthService.login(this.state.username, this.state.password).then(
-          // if login is successful
+          // if login is successful, redirect user to Home page
           () => {
             this.props.history.push('/home');
             window.location.reload();
           },
-          // if error occurs
+          // if any errors occur, show appropriate error message(s)
           error => {
             if (error.response.status === 400) {
               this.setState({
@@ -123,6 +123,7 @@ export default class Login extends Component {
           Login
         </button>
 
+        {/* show message(s) if there are any */}
         {this.state.message && (
             // add CSS to make it alert instead of text
             <div>
@@ -130,6 +131,7 @@ export default class Login extends Component {
             </div>
         )}
 
+        {/* CheckButton is used to check for errors with form and is not displayed on UI */}
         <CheckButton
             style={{ display: "none" }}
             ref={c => {

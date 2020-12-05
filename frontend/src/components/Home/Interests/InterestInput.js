@@ -16,10 +16,12 @@ export default class InterestInput extends Component {
   handleCreate() {
     this.props.addInterest(this.state.input);
 
+    // reset text area
     this.setState({ input: "" });
   }
 
   handleKeyPress(e) {
+    // add interest if 'Enter' key is pressed, then reset text area
     if (e.key === 'Enter') {
       this.props.addInterest(this.state.input);
 

@@ -13,8 +13,7 @@ export default class Interest extends Component {
   render() {
     return (
       <div>
-        <p>{this.props.interest.interest}</p>
-        <button onClick={this.handleDelete}>X</button>
+        <p>{this.props.interest.interest} <button onClick={this.handleDelete}>X</button></p>
       </div>
     );
   }
