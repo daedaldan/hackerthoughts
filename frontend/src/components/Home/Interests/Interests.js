@@ -49,10 +49,12 @@ export default class Interests extends Component {
 
     return (
       <div>
-        <p>Hi there, {this.props.username}.</p>
+        <h2>Hi there, {this.props.username}.</h2>
         <p>Type in a few of your interests.</p>
         <InterestInput addInterest={this.addInterest}/>
-        {interestsList}
+        <div className="interests">
+          {interestsList}
+        </div>
       </div>
     );
   }

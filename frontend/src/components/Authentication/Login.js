@@ -3,6 +3,8 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 
+import { Button } from 'antd';
+
 import AuthService from '../../services/auth.service.js';
 
 const required = value => {
@@ -105,6 +107,7 @@ export default class Login extends Component {
         <Input
             type="text"
             name="username"
+            className="form-input"
             value={this.state.username}
             onChange={this.onChangeUsername}
             validations={[required]}
@@ -114,14 +117,15 @@ export default class Login extends Component {
         <Input
             type="password"
             name="password"
+            className="form-input"
             value={this.state.password}
             onChange={this.onChangePassword}
             validations={[required]}
         />
 
-        <button disabled={this.state.loading}>
+        <Button className="login-button" type="primary" htmlType="submit" disabled={this.state.loading}>
           Login
-        </button>
+        </Button>
 
         {/* show message(s) if there are any */}
         {this.state.message && (

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Input, Button } from 'antd';
+
 export default class InterestInput extends Component {
   constructor(props) {
     super(props);
@@ -34,10 +36,12 @@ export default class InterestInput extends Component {
   }
 
   render() {
+    const { TextArea } = Input;
+
     return (
-      <div>
-        <textarea value={this.state.input} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
-        <button onClick={this.handleCreate}>Add</button>
+      <div className="interest-input">
+        <TextArea value={this.state.input} rows={1} style={{ width: 400, marginRight: 20 }} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+        <Button type="primary" style={{ marginTop: 10 }} onClick={this.handleCreate}>Add</Button>
       </div>
     );
   }

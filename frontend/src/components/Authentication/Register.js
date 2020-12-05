@@ -4,6 +4,8 @@ import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
 
+import { Button } from 'antd';
+
 import AuthService from '../../services/auth.service.js';
 
 const required = value => {
@@ -154,6 +156,7 @@ export default class Register extends Component {
               <Input
                   type="text"
                   name="username"
+                  className="form-input"
                   value={this.state.username}
                   onChange={this.onChangeUsername}
                   validations={[required, vusername]}
@@ -163,6 +166,7 @@ export default class Register extends Component {
               <Input
                   type="text"
                   name="email"
+                  className="form-input"
                   value={this.state.email}
                   onChange={this.onChangeEmail}
                   validations={[required, email]}
@@ -172,14 +176,15 @@ export default class Register extends Component {
               <Input
                   type="password"
                   name="password"
+                  className="form-input"
                   value={this.state.password}
                   onChange={this.onChangePassword}
                   validations={[required, vpassword]}
               />
 
-              <button>
+              <Button type="primary" htmlType="submit">
                 Sign Up
-              </button>
+              </Button>
             </div>
         )}
 

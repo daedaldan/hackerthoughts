@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import './App.css';
+import 'antd/dist/antd.css';
+import './index.css';
 
 import Home from './components/Home/Home.js';
 import Website from './components/Website/Website.js';
 import Login from './components/Authentication/Login.js';
 import Register from './components/Authentication/Register.js';
 import Logout from './components/Authentication/Logout.js';
+
+import { Button } from 'antd';
 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute.js';
 
@@ -49,25 +52,25 @@ class App extends Component{
       // if user is logged in
       navbarLinks = (<ul>
                       <li>
-                        <Link to={"/home"}>
-                          Home
-                        </Link>
+                        <Logout logout={this.logout}/>
                       </li>
                       <li>
-                        <Logout logout={this.logout}/>
+                        <Link to={"/home"}>
+                          <Button type="text">Home</Button>
+                        </Link>
                       </li>
                     </ul>);
     } else {
       // if no user is logged on
       navbarLinks = (<ul>
                       <li>
-                        <Link to={"/login"}>
-                          Login
+                        <Link to={"/register"}>
+                          <Button type="primary">Register</Button>
                         </Link>
                       </li>
                       <li>
-                        <Link to={"/register"}>
-                          Register
+                        <Link to={"/login"}>
+                          <Button type="text">Login</Button>
                         </Link>
                       </li>
                     </ul>);
@@ -78,8 +81,8 @@ class App extends Component{
       <div>
         <BrowserRouter>
           <nav>
-            <Link to={"/"}>
-              Website
+            <Link id="logo" to={"/"}>
+              HackerThoughts
             </Link>
 
             {navbarLinks}

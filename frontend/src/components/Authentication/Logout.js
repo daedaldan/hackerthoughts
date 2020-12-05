@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 
+import { Button } from 'antd';
+
 class Logout extends Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Logout extends Component {
 
   render() {
     return (
-        <button onClick={this.handleLogout}>Logout</button>
+        <Button onClick={this.handleLogout}>Logout</Button>
     );
   }
 }
