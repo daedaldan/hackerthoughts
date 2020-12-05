@@ -4,15 +4,14 @@ import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 import { isEmail } from 'validator';
 
-import { Button } from 'antd';
+import { Button, Alert } from 'antd';
 
 import AuthService from '../../services/auth.service.js';
 
 const required = value => {
   if (!value) {
     return (
-        // add CSS to make it alert instead of text
-        <div>
+        <div style={{ marginTop: -20, marginBottom: 20}}>
           This field is required.
         </div>
     );
@@ -22,8 +21,7 @@ const required = value => {
 const email = value => {
   if (!isEmail(value)) {
     return (
-        // add CSS to make it alert instead of text
-        <div>
+        <div style={{ marginTop: -20, marginBottom: 20}}>
           This is not a valid email.
         </div>
     );
@@ -33,8 +31,7 @@ const email = value => {
 const vusername = value => {
   if (value.length < 3 | value.length > 20) {
     return (
-        // add CSS to make it alert instead of text
-        <div>
+        <div style={{ marginTop: -20, marginBottom: 20}}>
           The username must be between 3 and 20 characters.
         </div>
     );
@@ -44,8 +41,7 @@ const vusername = value => {
 const vpassword = value => {
   if (value.length < 6 || value.length > 40) {
     return(
-        // add CSS to make it alert instead of text
-        <div>
+        <div style={{ marginTop: -20, marginBottom: 20}}>
           The password must be between 6 and 40 characters.
         </div>
     );
@@ -191,10 +187,7 @@ export default class Register extends Component {
 
         {/* show message(s) if there are any */}
         {this.state.message && (
-            // add CSS to make it alert instead of text
-            <div>
-              {this.state.message}
-            </div>
+            <Alert message={this.state.message} type="error" type="error" style={{ width: 600, marginTop: 20 }}/>
         )}
 
         {/* CheckButton is used to check for errors with form and is not displayed on UI */}

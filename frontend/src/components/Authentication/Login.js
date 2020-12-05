@@ -3,15 +3,14 @@ import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
 
-import { Button } from 'antd';
+import { Button, Alert } from 'antd';
 
 import AuthService from '../../services/auth.service.js';
 
 const required = value => {
   if (!value) {
     return (
-        // add CSS to make it alert instead of text
-        <div>
+        <div style={{ marginTop: -20, marginBottom: 20}}>
           This field is required.
         </div>
     );
@@ -129,10 +128,7 @@ export default class Login extends Component {
 
         {/* show message(s) if there are any */}
         {this.state.message && (
-            // add CSS to make it alert instead of text
-            <div>
-              {this.state.message}
-            </div>
+            <Alert message={this.state.message} type="error" style={{ marginTop: 20 }}/>
         )}
 
         {/* CheckButton is used to check for errors with form and is not displayed on UI */}
