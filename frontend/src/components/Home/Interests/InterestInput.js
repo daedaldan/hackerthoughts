@@ -13,13 +13,17 @@ export default class InterestInput extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleCreate(e) {
+  handleCreate() {
     this.props.addInterest(this.state.input);
+
+    this.setState({ input: "" });
   }
 
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       this.props.addInterest(this.state.input);
+
+      this.setState({ input: "" });
     }
   }
 
@@ -30,7 +34,7 @@ export default class InterestInput extends Component {
   render() {
     return (
       <div>
-        <input type="text" onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
+        <textarea value={this.state.input} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
         <button onClick={this.handleCreate}>Add</button>
       </div>
     );
