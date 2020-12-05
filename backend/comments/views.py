@@ -51,8 +51,8 @@ def get_comments_view(request, username):
                 comment = {
                     # reformat title
                     "title": "C" + entry['title'][5:],
-                    # convert comment summary from HTML to string
-                    "comment": ("\n".join(entry['summary'].split('<p>')[1::2]))[:-4],
+                    # store comment as HTML
+                    "comment": entry['summary'],
                     "link": entry['link']
                 }
                 # add comment to list of recommended comments

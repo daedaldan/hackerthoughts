@@ -1,36 +1,54 @@
-import React from 'react';
+import React, { Component } from 'react';
 
 import InterestInput from './InterestInput.js';
 import Interest from './Interest.js';
 
-export default function Interests(props) {
-  function fetchInterests() {
-    props.updateInterests();
+import UserService from '../../../services/user.service.js';
+
+export default class Interests extends Component {
+  constructor(props) {
+    super(props);
+
+    this.fetchInterests = this.fetchInterests.bind(this);
+    this.addInterest = this.addInterest.bind(this);
+    this.deleteInterest = this.deleteInterest.bind(this);
   }
 
-  function addInterest() {
-
+  fetchInterests() {
+    this.props.updateInterests();
   }
 
-  function deleteInterest() {
-
+  async addInterest(interest) {
+    await UserService.createInterest(interest, this.props.username).then(response => {
+      this.fetchInterests();
+    });
   }
 
-  // create list of user's current interests
-  let interestsList;
-
-  if (props.interests.length > 0) {
-    interestsList = props.interests.map((interestItem) =>
-      <Interest interest={interestItem.interest} deleteInterest={this.deleteInterest.bind(this)}/>
-    );
-  } else {
-    interestsList = "No interests yet.";
+  async deleteInterest(interest_id) {
+    await UserService.deleteInterest(interest_id).then(response => {
+      this.fetchInterests();
+    });
   }
 
-  return (
+  render() {
+    // create list of user's current interests
+    let interestsList;
+
+    if (this.props.interests.length > 0) {
+      interestsList = this.props.interests.map((interestItem) =>
+        <Interest interest={interestItem} key={interestItem.id} deleteInterest={this.deleteInterest}/>
+      );
+    } else {
+      interestsList = "No interests yet.";
+    }
+
+    return (
       <div>
-        <InterestInput addInterest={this.addInterest.bind(this)}/>
+        <p>Hi there, {this.props.username}.</p>
+        <p>Type in a few of your interests.</p>
+        <InterestInput addInterest={this.addInterest}/>
         {interestsList}
       </div>
     );
+  }
 }

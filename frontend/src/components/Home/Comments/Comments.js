@@ -4,8 +4,8 @@ import Comment from './Comment.js';
 
 export default function Comments(props) {
   if (props.comments.length > 0) {
-    const commentsList = props.comments.map((commentItem) =>
-      <Comment comment={commentItem}/>
+    const commentsList = props.comments.map((commentItem, index) =>
+      <Comment comment={commentItem} key={index}/>
     );
 
     return (

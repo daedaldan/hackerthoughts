@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-export default function Interest(props) {
-  return (
+export default class Interest extends Component {
+  constructor(props) {
+    super(props);
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete() {
+    this.props.deleteInterest(this.props.interest.id);
+  }
+
+  render() {
+    return (
       <div>
-        <p>{props.interest}</p>
+        <p>{this.props.interest.interest}</p>
+        <button onClick={this.handleDelete}>X</button>
       </div>
-  );
+    );
+  }
 }
