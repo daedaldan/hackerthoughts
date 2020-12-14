@@ -187,7 +187,7 @@ export default class Register extends Component {
 
         {/* show message(s) if there are any */}
         {this.state.message && (
-            <Alert message={this.state.message} type="error" type="error" style={{ width: 600, marginTop: 20 }}/>
+            <Alert message={this.state.message} type="error" style={{ width: 600, marginTop: 20 }}/>
         )}
 
         {/* CheckButton is used to check for errors with form and is not displayed on UI */}
