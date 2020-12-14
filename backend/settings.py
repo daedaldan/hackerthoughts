@@ -25,7 +25,7 @@ SECRET_KEY = 'selnu!gp31g1=f%jxtuehoni!qx*td^pfba(u0q=+n#shu2^9f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hackerthoughts.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -138,5 +138,5 @@ STATIC_URL = '/static/'
 
 # whitelist where frontend will be served
 CORS_ORIGIN_WHITELIST = [
-    'http://192.168.50.253:3000'
+    'http://192.168.50.246:3000'
 ]
