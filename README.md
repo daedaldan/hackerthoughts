@@ -14,7 +14,7 @@ Do you want to hear about interesting ideas? Get a fresh perspective on an old t
 - `python manage.py migrate`
 - `python manage.py runserver`
 
-The app can now be accessed at http://192.168.50.246:3000.
+The app can be accessed at http://192.168.50.246:3000.
 
 ## Demo
 https://drive.google.com/file/d/1Gwm4owKYPnisyxJqVTf0GKvmN8k61Els/view?usp=sharing
