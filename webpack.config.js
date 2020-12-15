@@ -8,12 +8,20 @@ module.exports = function(_env, argv) {
   const isDevelopment = !isProduction;
 
   return {
-    entry: path.join(__dirname, './src/index.js'),
+    context: __dirname,
+
+    devtool: isDevelopment && "cheap-module-source-map",
+
+    entry: path.join(__dirname, '/src/index.js'),
 
     output: {
-      path: path.join(__dirname, './dist'),
-      filename: '[name]-[hash].js',
-      publicPath: '/'
+      path: path.join(__dirname, './assets/dist/'),
+      filename: '[name].js',
+      publicPath: '/static/dist/'
+    },
+
+    devServer: {
+      writeToDisk: true,
     },
 
     plugins: [
@@ -22,8 +30,8 @@ module.exports = function(_env, argv) {
           filename: 'webpack-stats.json'
         }),
         new MiniCssExtractPlugin({
-          filename: './src/css/[name].[contenthash:8].css',
-          chunkFilename: './src/css/[name].[contenthash:8].chunk.css'
+          filename: 'assets/css/[name].[contenthash:8].css',
+          chunkFilename: 'assets/css/[name].[contenthash:8].chunk.css'
         })
     ],
 

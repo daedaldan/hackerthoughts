@@ -89,10 +89,10 @@ class App extends Component{
           </nav>
 
           <Switch>
-            <Route exact path="/" component={Website} />
             <PrivateRoute exact path="/home" component={Home} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
+            <Route path="/" component={Website} />
           </Switch>
         </BrowserRouter>
       </div>
