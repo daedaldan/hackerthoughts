@@ -26,7 +26,7 @@ SECRET_KEY = 'selnu!gp31g1=f%jxtuehoni!qx*td^pfba(u0q=+n#shu2^9f'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['hackerthoughts.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['hackerthoughts.herokuapp.com', '127.0.0.1:8000']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
 
     # Other apps
     'corsheaders',
+    'whitenoise.runserver_nostatic',
     'rest_framework',
     'rest_framework.authtoken',
     'webpack_loader',
@@ -57,6 +58,7 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -145,11 +147,12 @@ WEBPACK_LOADER = {
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets', 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 STATICFILES_DIR = (
     os.path.join(BASE_DIR, 'assets')
 )
-
 
 # whitelist where frontend will be served
 CORS_ORIGIN_WHITELIST = [
