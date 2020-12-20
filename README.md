@@ -17,4 +17,4 @@ Do you want to hear about interesting ideas? Get a fresh perspective on an old t
 The app can be accessed at http://192.168.50.246:3000.
 
 ## Demo
-https://drive.google.com/file/d/1Gwm4owKYPnisyxJqVTf0GKvmN8k61Els/view?usp=sharing
+Use the app at http://hackerthoughts.herokuapp.com, or view a video demo at https://drive.google.com/file/d/1Gwm4owKYPnisyxJqVTf0GKvmN8k61Els/view?usp=sharing.
