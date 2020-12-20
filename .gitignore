@@ -61,9 +61,6 @@ local_settings.py
 db.sqlite3
 db.sqlite3-journal
 
-# Django database migrations
-comments/migrations/
-
 # Flask stuff:
 instance/
 .webassets-cache
@@ -112,7 +109,6 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-ht_env/
 
 # Spyder project settings
 .spyderproject
