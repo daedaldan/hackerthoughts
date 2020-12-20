@@ -14,9 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
+from django.views.generic import TemplateView
+from django.views.decorators.cache import never_cache
+
 from rest_framework.authtoken.views import obtain_auth_token
 from comments import views
+
+index = never_cache(TemplateView.as_view(template_name='index.html'))
 
 urlpatterns = [
     # admin
@@ -30,4 +35,6 @@ urlpatterns = [
     # user authentication
     path('user/register/', views.CreateUserView.as_view(), name='register'),
     path('user/token-auth/', obtain_auth_token, name='token_auth'),
+    # React app
+    re_path('', index, name='index'),
 ]
