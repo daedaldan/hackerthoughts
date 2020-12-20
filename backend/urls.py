@@ -15,16 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.views.generic import TemplateView
-from django.views.decorators.cache import never_cache
-
 from rest_framework.authtoken.views import obtain_auth_token
 from comments import views
 
-index = never_cache(TemplateView.as_view(template_name='index.html'))
-
 urlpatterns = [
-    path('', index, name='index'),
     # admin
     path('admin/', admin.site.urls),
     # comments
