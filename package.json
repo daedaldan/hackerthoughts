@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://127.0.0.1:8000",
-  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
@@ -20,12 +19,10 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start & ./node_modules/.bin/webpack --config webpack.config.js",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "watch": "npm run start -- --watch",
-    "postinstall": "npm run build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -44,25 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/plugin-proposal-class-properties": "^7.12.1",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/plugin-transform-react-constant-elements": "^7.12.1",
-    "@babel/plugin-transform-react-inline-elements": "^7.12.1",
-    "@babel/plugin-transform-runtime": "^7.12.10",
-    "@babel/preset-env": "^7.12.10",
-    "@babel/preset-react": "^7.12.10",
-    "@babel/runtime": "^7.12.5",
-    "babel-loader": "^8.2.2",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "css-loader": "^5.0.1",
-    "extract-text-webpack-plugin": "^3.0.2",
-    "mini-css-extract-plugin": "^1.3.3",
-    "style-loader": "^2.0.0",
-    "webpack": "^5.10.1",
-    "webpack-bundle-tracker": "^0.4.3",
-    "webpack-cli": "^4.2.0"
   }
 }

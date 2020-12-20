@@ -15,13 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
 from comments import views
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='frontend/index.html')),
     # admin
     path('admin/', admin.site.urls),
     # comments
@@ -34,5 +31,3 @@ urlpatterns = [
     path('user/register/', views.CreateUserView.as_view(), name='register'),
     path('user/token-auth/', obtain_auth_token, name='token_auth'),
 ]
-
-urlpatterns += staticfiles_urlpatterns()
