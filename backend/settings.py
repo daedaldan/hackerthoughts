@@ -150,5 +150,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # whitelist where frontend will be served
 CORS_ORIGIN_WHITELIST = [
     'http://hackerthoughts.herokuapp.com',
+    'http://127.0.0.1:3000',
     'http://192.168.50.246:3000'
 ]
